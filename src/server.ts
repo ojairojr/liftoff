@@ -1,9 +1,9 @@
 import { fastify } from 'fastify'
+import { createUserRoute } from './routes/createUser'
 
 const app = fastify()
-app.get('/', () => {
-  return 'Hello world'
-})
+
+app.register(createUserRoute)
 
 app
   .listen({

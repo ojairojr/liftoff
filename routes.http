@@ -1,1 +1,11 @@
 GET http://localhost:3333/
+
+###
+
+# @name Create-User
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+  
+}
