@@ -11,6 +11,22 @@ export async function createUserRoute(app: FastifyInstance) {
     })
 
     const { name, email, password } = bodySchema.parse(req.body)
+    const user = await prisma.users.findMany()
+
+    const userExists = user
+      .map((users) => {
+        if (users.email === email) {
+          return users
+        }
+        return null
+      })
+      .filter(Boolean)
+
+    if (userExists.length > 0) {
+      return reply.status(400).send({
+        message: 'Email already exists. Try again!',
+      })
+    }
 
     try {
       await prisma.users.create({
