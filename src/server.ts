@@ -1,11 +1,11 @@
 import { fastify } from 'fastify'
-import { createUserRoute } from './routes/createUser'
-import { getAllUserRoute } from './routes/getAllUser'
+import { createUserController } from './controllers/createUserController'
+import { getAllUserController } from './controllers/getAllUserController'
 
 const app = fastify()
 
-app.register(createUserRoute)
-app.register(getAllUserRoute)
+app.register(createUserController)
+app.register(getAllUserController)
 
 app
   .listen({
